@@ -1,0 +1,50 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    #应用名称
+    name: reggie_take_out
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/reggie?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: root
+
+  mybatis-plus:
+    configuration:
+      #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+      map-underscore-to-camel-case: true
+      #日志输出
+      log-impl: org.apache.ibatis.logging.stdout.stdOutImpl
+    global-config:
+      db-config:
+        id-type: ASSIGN_ID
+
+  #邮件
+  mail:
+    #配置 SMTP 服务器地址
+    host: smtp.qq.com
+    #发送者邮箱
+    username: mirror_protip@qq.com
+    #配置 SMTP 授权码
+    password: mpqvgvnxabpseigb
+    #配置端口号 465或587
+    port: 587
+    #默认邮件编码
+    default-encoding: UTF-8
+    #配置 SSL 加密工厂
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          socketFactoryClass: javax.net.ssl.SSLSocketFactory
+        #开启debug模式, 在控制台打印日志, 方便调试
+        debug: true
+
+reggie:
+  path: E:\Resources\images\reggie\
